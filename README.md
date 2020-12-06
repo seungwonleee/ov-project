@@ -1,4 +1,4 @@
-# usage (antd design이 적용된 로그인, 회원가입)
+# usage
 1. server 폴더 안에 있는 config 폴더 안에 dev.js 파일을 생성한다.
 2. MongoDB와 연결하기 위해서 dev.js file에 module.exports = { mongoURI: << MongoDB 주소 >> } 를 입력한다.
 3. root directory에서 "npm install" 을 입력한다. (백엔드 종속성(dependencies) 다운로드)
