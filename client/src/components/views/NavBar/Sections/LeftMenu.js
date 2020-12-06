@@ -17,7 +17,7 @@ function LeftMenu(props) {
         <Link to='/'>인물</Link>
       </Menu.Item>
       <Menu.Item key="videoShare">
-        <Link to='/video/share'>개인작품</Link>
+        <Link to='/video/share'>개인 작품</Link>
       </Menu.Item>
     </Menu>
   )

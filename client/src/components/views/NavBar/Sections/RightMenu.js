@@ -40,7 +40,7 @@ function RightMenu(props) {
           <Link to='/video/upload'>작품 공유하기 <UploadOutlined /></Link>
         </Menu.Item>
         <Menu.Item key="logout">
-          <a onClick={logoutHandler}>로그아웃 <ExportOutlined /></a>
+          <a onClick={logoutHandler}>로그아웃</a>
         </Menu.Item>
       </Menu>
     )

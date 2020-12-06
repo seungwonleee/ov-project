@@ -9,7 +9,8 @@ import RegisterPage from "./views/RegisterPage/RegisterPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import VideoUploadPage from './views/VideoUploadPage/VideoUploadPage';
-import VideoSharePage from './views/VideoSharePage/VideoSharePage'
+import VideoSharePage from './views/VideoSharePage/VideoSharePage';
+import VideoDetailPage from './views/VideoDetailPage/VideoDetailPage';
 
 //null   아무나 접근가능
 //true   로그인 한사람만 접근 가능
