@@ -27,6 +27,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/video/upload" component={Auth(VideoUploadPage, true)} />
           <Route exact path="/video/share" component={Auth(VideoSharePage, null)} />
+          <Route exact path="/video/:videoId" component={Auth(VideoDetailPage, null)} />
         </Switch>
       </div>
       <Footer />
