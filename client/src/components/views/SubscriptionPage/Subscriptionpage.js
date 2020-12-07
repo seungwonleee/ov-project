@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Avatar, Col, Row, Typography } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import moment from 'moment';
 const { Title } = Typography;
 const { Meta } = Card;
 
 
-const VideoSharePage = () => {
+const Subscriptionpage = () => {
 
     const [video, setVideo] = useState([]);
 
     useEffect(() => {
 
-        axios.get('/api/video/getVideos')
+        const subscriptionVariables = {
+            userFrom: localStorage.getItem('userId')
+        }
+
+        axios.post('/api/video/getSubscriptionVideos', subscriptionVariables)
             .then(res => {
                 if (res.data.success) {
+                    console.log(res.data)
                     setVideo(res.data.videos);
                 } else {
                     alert('비디오를 불러오는 도중에 문제가 발생했습니다.')
@@ -47,7 +51,7 @@ const VideoSharePage = () => {
             <br />
             <Meta
                 avatar={
-                    <Avatar icon={<UserOutlined />} src={video.writer.image} />
+                    <Avatar src={video.writer.image} />
                 }
                 title={video.title}
             />
@@ -59,7 +63,7 @@ const VideoSharePage = () => {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Title level={2}>개인 작품</Title>
+            <Title level={2}>구독 목록</Title>
             <hr />
             <Row gutter={[32, 16]}>
                 {renderCards}
@@ -68,4 +72,4 @@ const VideoSharePage = () => {
     )
 }
 
-export default VideoSharePage
+export default Subscriptionpage

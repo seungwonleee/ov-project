@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Video } = require("../models/Video");
+const { Subscriber } = require('../models/Subscriber');
 
 const { auth } = require("../middleware/auth");
 const multer = require('multer');
@@ -70,7 +71,6 @@ router.post('/getVideoDetail', (req, res) => {
         })
 })
 
-
 router.post("/thumbnail", (req, res) => {
     //썸네일 생성
     let filePath = ""
@@ -106,5 +106,28 @@ router.post("/thumbnail", (req, res) => {
             filename: 'thumbnail-%b.png'
         })
 });
+
+router.post('/getSubscriptionVideos', (req, res) => {
+    //구독한 비디오를 DB에서 가져와서 클라이언트로 보낸다.
+    Subscriber.find({ 'userFrom': req.body.userFrom })
+        .exec((err, subscriberInfo) => {
+            if (err) return res.status(400).send(err);
+
+            let subscriberUser = [];
+
+            subscriberInfo.map((subscriber, index) => {
+                subscriberUser.push(subscriber.userTo)
+            })
+
+            //찾은 사람들의 비디오를 가지고 온다.
+            Video.find({ writer: { $in: subscriberUser } })
+                .populate('writer')
+                .exec((err, videos) => {
+                    if (err) return res.status(400).send(err);
+                    res.status(200).json({ success: true, videos })
+                })
+        })
+
+})
 
 module.exports = router;

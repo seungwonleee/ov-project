@@ -45,6 +45,7 @@ const Subscribe = (props) => {
     useEffect(() => {
 
         const subscribeNumberVariables = { userTo: userTo, userFrom: userFrom }
+
         axios.post('/api/subscribe/subscribeNumber', subscribeNumberVariables)
             .then(response => {
                 if (response.data.success) {
@@ -64,7 +65,6 @@ const Subscribe = (props) => {
             })
 
     }, [])
-
 
     return (
         <div>

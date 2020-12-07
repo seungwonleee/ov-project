@@ -11,6 +11,7 @@ import Footer from "./views/Footer/Footer"
 import VideoUploadPage from './views/VideoUploadPage/VideoUploadPage';
 import VideoSharePage from './views/VideoSharePage/VideoSharePage';
 import VideoDetailPage from './views/VideoDetailPage/VideoDetailPage';
+import Subscriptionpage from './views/SubscriptionPage/Subscriptionpage';
 
 //null   아무나 접근가능
 //true   로그인 한사람만 접근 가능
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/video/upload" component={Auth(VideoUploadPage, true)} />
           <Route exact path="/video/share" component={Auth(VideoSharePage, null)} />
           <Route exact path="/video/:videoId" component={Auth(VideoDetailPage, null)} />
+          <Route exact path="/subscription" component={Auth(Subscriptionpage, null)} />
         </Switch>
       </div>
       <Footer />
